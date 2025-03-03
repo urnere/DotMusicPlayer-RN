@@ -15,7 +15,15 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_AUDIO",
+        "android.permission.WAKE_LOCK",
+        "android.permission.FOREGROUND_SERVICE"
+      ],
+      "package": "com.urnere.dotmusicplayer"
     },
     "web": {
       "bundler": "metro",
@@ -32,10 +40,33 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/logo.png",
+          "color": "#ffffff",
+          "sounds": ["./assets/sounds/notification.wav"]
+        }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "85c5f681-eedb-4ec5-988b-b35543f36334"
+      }
+    },
+    "notification": {
+      "icon": "./assets/images/logo.png",
+      "color": "#F2F6D0",
+      "androidMode": "default",
+      "androidCollapsedTitle": "#{unread_notifications} new messages",
+      "iosDisplayInForeground": true
     }
   }
 }

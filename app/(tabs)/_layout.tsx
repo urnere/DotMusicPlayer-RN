@@ -1,43 +1,61 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
-
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { Tabs } from "expo-router/tabs";
+import { FontAwesome } from "@expo/vector-icons";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        tabBarActiveTintColor: "#F2F6D0",
+        tabBarInactiveTintColor: "#D98324",
+        tabBarStyle: {
+          backgroundColor: "#443627",
+          borderTopWidth: 0,
+        },
+        tabBarLabelStyle: {
+          fontFamily: "outfit-m",
+          fontSize: 10,
+        },
+        headerStyle: {
+          backgroundColor: "#443627",
+        },
+        headerTintColor: "#F2F6D0",
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="library"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: "Library",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="list" size={24} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="favorites"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: "Favorites",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="heart" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="search"
+        options={{
+          title: "Search",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="search" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="player"
+        options={{
+          headerShown: false,
+          title: "Player",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="play" size={24} color={color} />
+          ),
         }}
       />
     </Tabs>
